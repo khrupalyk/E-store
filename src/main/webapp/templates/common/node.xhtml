@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <li style="color: red;">
+        <h:link outcome="/category?faces-redirect=true" value="#{node.name}">
+                                        <f:param name="categoryId" value="#{node.category_id}"/>
+                                    </h:link>
+        <c:if test="#{node.hasChildren}">
+            <!--<ul>-->
+                <c:forEach items="#{node.categories}" var="node">
+                    <ui:include src="node.xhtml" />
+                </c:forEach>
+            <!--</ul>-->
+        </c:if>
+    </li>
+</ui:composition>
