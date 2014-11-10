@@ -46,7 +46,7 @@
                                                 <li>
                                                     <label for="email" class="required"><em>*</em>Логін</label>
                                                     <div class="input-box">
-                                                        <h:inputText value="#{user.login}" id="login" class="input-text required-entry validate-email" >
+                                                        <h:inputText value="#{user.login}" id="login" class="input-text required-entry validate-email " >
                                                             <!--<f:validator validatorId="validators.LoginValidator" />-->
                                                             <!--<f:attribute name="password" value="{passwordL}"/>-->
                                                         </h:inputText>
@@ -64,7 +64,7 @@
                                                 </li>
                                             </ul>
                                             <div class="buttons-set form-buttons btn-only">
-                                                <h:commandButton value="#{msgs.login}" action="#{user.check}" class="button btn-black" >
+                                                <h:commandButton value="#{msgs.login}" action="#{user.check}" class="btn btn-warning" >
                                                     <!--<f:ajax />-->
                                                 </h:commandButton>
                                             </div>
@@ -83,13 +83,13 @@
                                         <h2 class="legend">Нові клієнти</h2>
                                         <p>Створивши обліковий запис на нашому сайті, ви будете витрачати менше часу на оформлення замовлення і відстежувати стан замовлень.</p>
                                         <div class="buttons-set">
-                                            <button type="button" class="button btn-black">
+                                            <!--<button type="button" class="">-->
                                                 <span><span>
-                                                        <h:link value="Реєстрація" outcome="/login?faces-redirect=true" >
+                                                        <h:link value="Реєстрація" outcome="/login?faces-redirect=true" class="btn btn-warning">
                                                             <f:param name="path" value="create"/>
                                                         </h:link>
                                                     </span></span>
-                                            </button>
+                                            <!--</button>-->
                                         </div>
                                     </div>
                                 </div>

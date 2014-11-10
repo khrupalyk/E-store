@@ -473,7 +473,7 @@
                                                         <h:commandButton value="Опублікувати" action="#{user.addComment()}" class="button questionFormSubmit" >
                                                             <f:param name="productId" value="#{product.product_id}"/>
                                                             <f:ajax render="@form" execute="descriprionInputArea"/>
-                                                        </h:commandButton>
+                                                        </h:commandButton><br/>
                                                         <div class="clearer"></div>
                                                     </div>
 
@@ -501,6 +501,8 @@
                                         </div><!-- .c-left -->
                                         <div class="clearer"></div>
                                     </div>
+                                    <br/>
+                                    <br/>
                                     <c:forEach var="comment" items="#{product.comments}" >
 
                                         <div class="reviews-block">
