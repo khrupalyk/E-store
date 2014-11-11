@@ -73,8 +73,6 @@ public class UserSession implements Serializable {
     public void setRegisterBeforeOrder(boolean registerBeforeOrder) {
         this.registerBeforeOrder = registerBeforeOrder;
     }
-    
-    
 
     public String updateCategories(Category category) {
         categories = (List<Category>) factory.getCategoryDAO().getMainCategories();
@@ -168,31 +166,29 @@ public class UserSession implements Serializable {
             HttpSession session = request.getSession(false);
             Statement statement = pool.getStatement();
 
-            ResultSet result = statement.executeQuery("SELECT account_id, login, role, password FROM account");
+            ResultSet result = statement.executeQuery("SELECT account_id, login, role, password FROM account where login = '"
+                    + login + "' and password = CONCAT(md5('" + password + "'),md5('" + login + "'));");
             System.out.println("login: " + login + "  passowrd: " + password);
-            while (result.next()) {
+            if (result.next()) {
 
-                if (result.getString("login").equals(login) && result.getString("password").equals(getMD5(password) + getMD5(result.getString("login")))) {
-                    if (session != null) {
-                        session.setAttribute("authentication", "true");
-                        id = result.getInt("account_id");
-                        System.out.println("testsss");
+                if (session != null) {
+                    session.setAttribute("authentication", "true");
+                    id = result.getInt("account_id");
+                    System.out.println("testsss");
 
-                        account = factory.getAccountDAO().getAccountById(id);
-                        System.out.println("testsss1");
-                        l = account.toArrayList();
-                        prevAccount = account;
-                        role = account.getRole();
+                    account = factory.getAccountDAO().getAccountById(id);
+                    System.out.println("testsss1");
+                    l = account.toArrayList();
+                    prevAccount = account;
+                    role = account.getRole();
 
-                        if(registerBeforeOrder){
-                            System.out.println("registerBeforeOrder in check: " + registerBeforeOrder);
+                    if (registerBeforeOrder) {
+                        System.out.println("registerBeforeOrder in check: " + registerBeforeOrder);
                         registerBeforeOrder = false;
-                        }else{
-                            cart = factory.getCartDAO().getCartByAccount(account);
-                        }
-                        
-                        break;
+                    } else {
+                        cart = factory.getCartDAO().getCartByAccount(account);
                     }
+
                 }
             }
 
@@ -754,8 +750,8 @@ public class UserSession implements Serializable {
         }
 
     }
-    
-    public String getMainImage(Product product){
+
+    public String getMainImage(Product product) {
         if (product == null && this.product == null) {
             return null;
         }
@@ -797,7 +793,7 @@ public class UserSession implements Serializable {
 
     public boolean isContainedInBasket(Product product) {
         Product tmp = product;
-        if(tmp == null){
+        if (tmp == null) {
             tmp = this.product;
         }
         for (ItemCart item : cart.getItemCart()) {
