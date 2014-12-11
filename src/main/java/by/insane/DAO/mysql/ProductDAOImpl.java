@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.inject.Inject;
 
 /**
  *
@@ -27,6 +28,8 @@ public class ProductDAOImpl implements ProductDAO, Serializable {
     private Statement statement;
     private PreparedStatement addStatement;
     private PreparedStatement updateStatement;
+    @Inject
+    private DataBaseConnection conn;
 
     public ProductDAOImpl() {
         try {

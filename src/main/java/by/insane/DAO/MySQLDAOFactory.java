@@ -22,7 +22,7 @@ import by.insane.DAO.mysql.ProductDAOImpl;
  */
 import java.io.Serializable;
 
-public class MySQLDAOFactory extends DAOFactory implements Serializable{
+public class MySQLDAOFactory extends DAOFactory implements Serializable {
 
     private static ProductDAO productDAO = null;
     private static CategoryDAO categoryDAO = null;
@@ -113,5 +113,19 @@ public class MySQLDAOFactory extends DAOFactory implements Serializable{
             cartDAO = new CartDAOImpl();
         }
         return cartDAO;
+    }
+
+    public void close() {
+        productDAO = null;
+        categoryDAO = null;
+        accountDAO = null;
+        commentsDAO = null;
+        cartDAO = null;
+        itemOrdersDAO = null;
+        ordersDAO = null;
+        ImagesDAO = null;
+        itemCartDAO = null;
+        featuresDAO = null;
+
     }
 }

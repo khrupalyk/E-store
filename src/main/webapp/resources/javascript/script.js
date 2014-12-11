@@ -1,11 +1,11 @@
-window.onload = function()
+window.onload = function ()
 {
 
 //    $('.hardware').click(function() {
 //        $(this).next().slideToggle(500);
 //    });
 
-    $('#show-orders').click(function() {
+    $('#show-orders').click(function () {
         var div = $('#show-orders-div');
 
         if (div.hasClass('visible')) {
@@ -17,7 +17,7 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('#drop-order').click(function() {
+    $('#drop-order').click(function () {
         var div = $('#drop-order-div');
 
         if (div.hasClass('visible')) {
@@ -29,7 +29,7 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('#drop-update-category').click(function() {
+    $('#drop-update-category').click(function () {
         var div = $('#update-delete-category-panel');
 
         if (div.hasClass('visible')) {
@@ -41,7 +41,7 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('#update-order').click(function() {
+    $('#update-order').click(function () {
         var div = $('#update-order-div');
 
         if (div.hasClass('visible')) {
@@ -53,18 +53,18 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    var showNextPanel = function(div) {
+    var showNextPanel = function (div) {
         $('.panelNext').css('z-index', '198');
         hideNextPanel('all');
         div.addClass('visible');
         div.css('z-index', '199');
         div.animate({
             left: '+=' + ($('#panel').width() + 410)
-        }, 200, function() {
+        }, 200, function () {
             $(this).addClass('visible');
         });
     };
-    var hideNextPanel = function(div) {
+    var hideNextPanel = function (div) {
         if (div === 'all') {
             $('.panelNext').animate({'left': '-410px'}, 200);
             $('.panelNext').removeClass('visible');
@@ -76,12 +76,12 @@ window.onload = function()
         } else {
             div.animate({
                 left: '-=' + ($('#panel').width() + 410)
-            }, 200, function() {
+            }, 200, function () {
                 $(this).removeClass('visible');
             });
         }
     };
-    $('#add-product').click(function() {
+    $('#add-product').click(function () {
         var div = $('#add-produc-div');
 
         if (div.hasClass('visible')) {
@@ -94,7 +94,7 @@ window.onload = function()
         }
     });
 
-    $('#update-role').click(function() {
+    $('#update-role').click(function () {
         var div = $('#update-user-role-div');
 
         if (div.hasClass('visible')) {
@@ -106,7 +106,7 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('#drop-user').click(function() {
+    $('#drop-user').click(function () {
         var div = $('#drop-user-role-div');
 
         if (div.hasClass('visible')) {
@@ -118,7 +118,7 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('#show-list-user').click(function() {
+    $('#show-list-user').click(function () {
         var div = $('#list-user-role-div');
 
         if (div.hasClass('visible')) {
@@ -130,36 +130,36 @@ window.onload = function()
             div.addClass('visible');
         }
     });
-    $('.button-redag').click(function() {
+    $('.button-redag').click(function () {
         $('#redag-modal').arcticmodal();
     });
 
-    $('#user-control').click(function() {
+    $('#user-control').click(function () {
         $('#user-control-bar').slideToggle(100);
     });
 
-    $('#order-control').click(function() {
+    $('#order-control').click(function () {
         $('#order-control-bar').slideToggle(100);
     });
-    $('#category-control').click(function() {
+    $('#category-control').click(function () {
         $('#category-control-bar').slideToggle(100);
     });
 
-    $('#product-control').click(function() {
+    $('#product-control').click(function () {
         $('#product-control-bar').slideToggle(100);
 
     });
 
-    $('.redag-window').click(function() {
+    $('.redag-window').click(function () {
         $('#redag-product-window').css("display", "block");
     });
 
-    $('.update-link').click(function() {
+    $('.update-link').click(function () {
         $('#update-product-window').css("display", "block");
         $('#update-product-window').css("pointer-events", "auto");
     });
 
-    $('.update-close').click(function() {
+    $('.update-close').click(function () {
         $('#update-product-window').css("display", "none");
     });
 
@@ -168,14 +168,14 @@ window.onload = function()
 
 
     $(".level0").hover(
-            function() {
+            function () {
                 var param = $(this).attr("param");
 //          $(this).css("background-color","white");
                 $(this).css("color", "eee");
                 $('.' + param).css("display", "block");
 
             },
-            function() {
+            function () {
                 var param = $(this).attr("param");
                 $('.' + param).css("display", "none");
 //          $(this).css("background","red");
@@ -184,34 +184,43 @@ window.onload = function()
     );
 
     $(".subcategories").hover(
-            function() {
+            function () {
                 $(this).css("display", "block");
             },
-            function() {
+            function () {
                 $(this).css("display", "none");
             }
     );
 
-
+    $('#panel-sticker').click(function () {
+        $('#panel-content').css("background-color","black");
+        $('#panel-content').css("opacity","0.9");
+    });
+    $('.updateClicker').click(function () {
+        $('#update-product-panel').css("background-color","black");
+        $('#panel-content-update-product').css("background-color","black");
+        $('#update-product-panel').css("opacity","0.9");
+        $('#panel-content-update-product').css("opacity","0.9");
+    });
     var panel = $('#panel');
     if (panel.length) {
         var sticker = panel.children('#panel-sticker');
-        var showPanel = function() {
+        var showPanel = function () {
             panel.animate({
                 left: '+=290'
-            }, 200, function() {
+            }, 200, function () {
                 $(this).addClass('visible');
             });
         };
-        var hidePanel = function() {
+        var hidePanel = function () {
             panel.animate({
                 left: '-=290'
-            }, 200, function() {
+            }, 200, function () {
                 $(this).removeClass('visible');
             });
         };
         sticker
-                .click(function() {
+                .click(function () {
                     if (panel.hasClass('visible')) {
                         hidePanel();
                         hideNextPanel('all');
@@ -220,7 +229,7 @@ window.onload = function()
                         showPanel();
                     }
                 }).andSelf()
-                .children('.close').click(function() {
+                .children('.close').click(function () {
             panel.remove();
         });
     }
@@ -228,22 +237,22 @@ window.onload = function()
     var panel2 = $('#update-product-panel');
     if (panel2.length) {
         var sticker2 = $('.updateClicker');
-        var showPanel2 = function() {
+        var showPanel2 = function () {
             panel2.animate({
                 right: '+=450'
-            }, 200, function() {
+            }, 200, function () {
                 $(this).addClass('visible');
             });
         };
-        var hidePanel2 = function() {
+        var hidePanel2 = function () {
             panel2.animate({
                 right: '-=450'
-            }, 200, function() {
+            }, 200, function () {
                 $(this).removeClass('visible');
             });
 
         };
-        sticker2.click(function() {
+        sticker2.click(function () {
             if ($(this).hasClass('clicked')) {
                 if (panel2.hasClass('visible')) {
                     hidePanel2();
@@ -262,10 +271,10 @@ window.onload = function()
             }
 
         }).andSelf()
-                .children('.close').click(function() {
+                .children('.close').click(function () {
             panel2.remove();
         });
-        $('.panel-sticker-update-product').click(function(){
+        $('.panel-sticker-update-product').click(function () {
             hidePanel2();
             $('.updateClicker').removeClass('clicked');
         });

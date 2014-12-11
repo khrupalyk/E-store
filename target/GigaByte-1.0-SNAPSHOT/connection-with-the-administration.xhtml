@@ -22,12 +22,12 @@
                                 <h:inputText style="width: 503px;" value="#{sendMessageBean.name}" disabled="true"/><br/>
                             </c:when>
                             <c:when test="#{!user.authentication}">
-                                <h:inputText style="width: 503px;" pt:placeholder="*Enter you email.." value="#{sendMessageBean.email}"/><br/>
-                                <h:inputText style="width: 503px;" pt:placeholder="*Enter you name.." value="#{sendMessageBean.name}"/><br/>
+                                <h:inputText style="width: 503px;" pt:placeholder="Enter you email.." value="#{sendMessageBean.email}"/><br/>
+                                <h:inputText style="width: 503px;" pt:placeholder="Enter you name.." value="#{sendMessageBean.name}"/><br/>
                             </c:when>
 
                         </c:choose>
-                        <h:inputTextarea cols="97" rows="10" pt:placeholder="*Enter you message.." value="#{sendMessageBean.message}"/><br/>
+                        <h:inputTextarea cols="97" rows="10" pt:placeholder="Enter you message.." value="#{sendMessageBean.message}"/><br/>
                         <h:commandButton value="connect" action="#{sendMessageBean.sendMessage()}" class="btn btn-warning"/>
 
                     </h:panelGrid>

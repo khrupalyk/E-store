@@ -239,7 +239,7 @@ public class UserSession implements Serializable {
         return false;
     }
 
-    public void logout() {
+    public String logout() {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -252,7 +252,7 @@ public class UserSession implements Serializable {
         cart.setAccount(null);
         cart.setAccountId(0);
         cart.getItemCart().clear();
-        indexRedirect();
+        return "/index?faces-resirect=true";
     }
 
     public String register() {
@@ -290,31 +290,31 @@ public class UserSession implements Serializable {
             e.printStackTrace();
         }
     }
-
-    public void categoryRedirect() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        try {
-            HttpServletRequest request
-                    = (HttpServletRequest) context.getExternalContext().getRequest();
-            HttpServletResponse response
-                    = (HttpServletResponse) context.getExternalContext().getResponse();
-
-            System.out.println("kadn anfkan ka nk           " + request.getParameter("username"));
-            response.sendRedirect("category");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            context.responseComplete();
-        }
-    }
-
-    public void indexRedirect() {
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/GigaByte/faces/index.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(UserSession.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//
+//    public void categoryRedirect() {
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        try {
+//            HttpServletRequest request
+//                    = (HttpServletRequest) context.getExternalContext().getRequest();
+//            HttpServletResponse response
+//                    = (HttpServletResponse) context.getExternalContext().getResponse();
+//
+//            System.out.println("kadn anfkan ka nk           " + request.getParameter("username"));
+//            response.sendRedirect("category");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            context.responseComplete();
+//        }
+//    }
+//
+//    public void indexRedirect() {
+//        try {
+//            FacesContext.getCurrentInstance().getExternalContext().redirect("/GigaByte/faces/index.xhtml");
+//        } catch (IOException ex) {
+//            Logger.getLogger(UserSession.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
     public Map<String, String> getMapUser() {
         Account account = factory.getAccountDAO().getAccountById(id);
@@ -338,7 +338,7 @@ public class UserSession implements Serializable {
     }
 
     public List<Category> getCategories() {
-        return categories;
+        return (List<Category>) factory.getCategoryDAO().getMainCategories();
     }
 
     public Product getProductById(String id) {

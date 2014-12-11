@@ -7,7 +7,7 @@ package by.insane.DAO;
 
 import java.io.Serializable;
 
-public abstract class DAOFactory implements Serializable{
+public abstract class DAOFactory implements Serializable {
 
     public static final int MY_SQL = 1;
     public static final int ORM = 2;
@@ -33,6 +33,8 @@ public abstract class DAOFactory implements Serializable{
     public abstract CommentsDAO getCommentsDAO();
 
     public abstract CartDAO getCartDAO();
+    
+    public abstract void close();
 
     public static DAOFactory getFactory(int type) {
 
@@ -45,5 +47,10 @@ public abstract class DAOFactory implements Serializable{
 
         }
         return null;
+    }
+
+    public static void closeAll() {
+        mySQLDAOFactory = null;
+        oRMFactory = null;
     }
 }
